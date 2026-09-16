@@ -1,0 +1,261 @@
+{
+  "tables": [
+    {
+      "family": "qwen3",
+      "size": "0.6b",
+      "n_rows_raw": 110,
+      "n_rows_blackbox": 110,
+      "n_configs": 10,
+      "n_fidelities": 11,
+      "fidelities": [
+        200,
+        400,
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2031
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06,
+        8e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ]
+    },
+    {
+      "family": "qwen3",
+      "size": "1.7b",
+      "n_rows_raw": 110,
+      "n_rows_blackbox": 110,
+      "n_configs": 10,
+      "n_fidelities": 11,
+      "fidelities": [
+        200,
+        400,
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2031
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06,
+        8e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ]
+    },
+    {
+      "family": "qwen3",
+      "size": "4b",
+      "n_rows_raw": 176,
+      "n_rows_blackbox": 176,
+      "n_configs": 16,
+      "n_fidelities": 11,
+      "fidelities": [
+        200,
+        400,
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2031
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06,
+        8e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04,
+        0.08
+      ]
+    },
+    {
+      "family": "qwen3",
+      "size": "8b",
+      "n_rows_raw": 165,
+      "n_rows_blackbox": 165,
+      "n_configs": 15,
+      "n_fidelities": 11,
+      "fidelities": [
+        200,
+        400,
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2031
+      ],
+      "lr_values": [
+        4e-07,
+        8e-07,
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ]
+    },
+    {
+      "family": "qwen3",
+      "size": "14b",
+      "n_rows_raw": 176,
+      "n_rows_blackbox": 176,
+      "n_configs": 16,
+      "n_fidelities": 11,
+      "fidelities": [
+        200,
+        400,
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2031
+      ],
+      "lr_values": [
+        8e-08,
+        4e-07,
+        8e-07,
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ]
+    },
+    {
+      "family": "llama",
+      "size": "1b",
+      "n_rows_raw": 99,
+      "n_rows_blackbox": 99,
+      "n_configs": 9,
+      "n_fidelities": 11,
+      "fidelities": [
+        200,
+        400,
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2031
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ]
+    },
+    {
+      "family": "llama",
+      "size": "3b",
+      "n_rows_raw": 99,
+      "n_rows_blackbox": 99,
+      "n_configs": 9,
+      "n_fidelities": 11,
+      "fidelities": [
+        200,
+        400,
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2031
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ]
+    },
+    {
+      "family": "llama",
+      "size": "8b",
+      "n_rows_raw": 99,
+      "n_rows_blackbox": 99,
+      "n_configs": 9,
+      "n_fidelities": 11,
+      "fidelities": [
+        200,
+        400,
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2031
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ]
+    }
+  ]
+}
