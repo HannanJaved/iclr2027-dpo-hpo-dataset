@@ -35,8 +35,8 @@ Each (lr, β) configuration is evaluated at DPO steps 200, 400, …, 2000 and th
 
 ## Intended use
 
-Offline multi-fidelity HPO / surrogate simulation (e.g. Syne Tune `BlackboxTabular` or a regression surrogate over `log10(lr)` × `log10(beta)`). Not a drop-in Hugging Face model release.
+Offline multi-fidelity HPO / surrogate simulation (e.g. Syne Tune `BlackboxTabular` or a regression surrogate over `log10(lr)` × `log10(beta)`).
 
 ## License
 
-CC BY 4.0 (see `LICENSE`). Cite the paper after acceptance.
+CC BY 4.0 (see `LICENSE`).
