@@ -2,8 +2,6 @@
 
 Anonymized tables of **evaluated DPO hyperparameters**, **intermediate training fidelities**, **measured training cost**, and **downstream evaluation scores**. These tables are the source used to construct the offline HPO blackboxes in the paper.
 
-No author names, institution names, cluster paths, or training-run identifiers are included.
-
 ## Contents
 
 ```
