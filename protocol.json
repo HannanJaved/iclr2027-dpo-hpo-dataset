@@ -1,0 +1,56 @@
+{
+  "search_space": "continuous log10(lr) \u00d7 log10(beta)",
+  "optimizers": [
+    "RandomSearch",
+    "TPE",
+    "CQR",
+    "ASHA",
+    "BOHB"
+  ],
+  "search_objectives": [
+    "Z-Dynamic",
+    "Z-All",
+    "Z-Macro"
+  ],
+  "composite_objectives": [
+    "Z-Static",
+    "Z-Dynamic",
+    "Z-All",
+    "Z-Macro"
+  ],
+  "n_seeds": 25,
+  "n_workers": 2,
+  "asha_grace_period": 400,
+  "asha_reduction_factor": 2,
+  "asha_rungs": [
+    400,
+    800,
+    1600
+  ],
+  "budget_regimes": {
+    "generous": "8.0\u00d7 one full DPO run (wall-clock of 2 workers)",
+    "tight": "1.0\u00d7 one full DPO run (wall-clock of 2 workers)"
+  },
+  "surrogates": [
+    "knn1",
+    "knn3",
+    "knn5",
+    "gp"
+  ],
+  "incumbent_rule": "Best finished trial on the search metric at the final fidelity; if none finished, best trial at the highest common fidelity in the prefix.",
+  "traces_cover": "Qwen3 informed continuous-surrogate study (all sizes, all surrogates, generous+tight).",
+  "llama_in_tables_only": true,
+  "fidelities": [
+    200,
+    400,
+    600,
+    800,
+    1000,
+    1200,
+    1400,
+    1600,
+    1800,
+    2000,
+    2031
+  ]
+}

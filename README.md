@@ -1,24 +1,41 @@
-# DPO-AO offline HPO blackbox (checkpoint-level)
+# DPO-AO offline HPO blackbox
 
-Anonymized tables of **evaluated DPO hyperparameters**, **intermediate training fidelities**, **measured training cost**, and **downstream evaluation scores**. These tables are the source used to construct the offline HPO blackboxes in the paper.
+Anonymized **checkpoint grid**, **blackbox construction code**, and **HPO
+simulation traces** for DPO hyperparameter selection (learning rate and β).
 
-## Contents
+## Layout
 
 ```
-data/
-  {qwen3,llama}_{size}_raw.csv         collected checkpoint grid (missing evals left as empty)
-  {qwen3,llama}_{size}_blackbox.csv    same grid after the blackbox cleaning pipeline + Z-scores
-  all_checkpoints_raw.csv              concatenation of the raw tables
-  all_checkpoints_blackbox.csv         concatenation of the blackbox tables
-manifest.json                          per-size config / fidelity counts
+data/                         checkpoint tables (core artifact)
+  {qwen3,llama}_{size}_raw.csv
+  {qwen3,llama}_{size}_blackbox.csv
+  all_checkpoints_raw.csv              Qwen3 AO + Llama AO
+  all_checkpoints_blackbox.csv
+  llama_all_checkpoints_{raw,blackbox}.csv   Llama-only concat (1B/3B/8B)
+  qwen3_4b_ultrafeedback_{raw,blackbox}.csv  Qwen3-4B trained on UltraFeedback
+                                             (not AO self-play; 9 configs × 10 steps)
+traces/                       Qwen3 informed-protocol search logs (gzipped)
+  qwen3_{size}/{gp,knn1,knn3,knn5}/{generous,tight}/
+    simulation_raw.csv.gz     every optimizer report (config × checkpoint)
+    best_found.csv.gz         one incumbent per (objective, optimizer, seed)
+code/                         construction + simulation (no cluster metadata)
+protocol.json                 HPO settings (ASHA rungs, budgets, seeds, …)
+manifest.json                 per-size config / fidelity counts
+traces_manifest.json          per-trace row counts and objectives
 ```
 
-**Qwen3:** 0.6B, 1.7B, 4B, 8B, 14B.
-**Llama:** 1B, 3B, 8B.
+**Qwen3 (tables + traces):** 0.6B, 1.7B, 4B, 8B, 14B.
+**Llama (tables only):** 1B, 3B, 8B.
 
-Each (lr, β) configuration is evaluated at DPO steps 200, 400, …, 2000 and the final checkpoint (~2031). Cost is `elapsed_time_sec`, derived from each run’s own trainer runtime (seconds per step × step).
+Each (lr, β) configuration is scored at DPO steps 200, 400, …, 2000 and the
+final checkpoint (~2031). Cost is `elapsed_time_sec` from that run’s trainer
+runtime. **UltraFeedback** Qwen3-4B uses a shorter schedule (steps 48, 96, …,
+432 and final ~478) and adds a `dataset=ultrafeedback_binarized` column so it
+is not mixed into the AO blackbox.
 
-## Columns
+## Core table schema
+
+`all_checkpoints_*.csv` is indexed by `(family, size, lr, beta, dpo_step)`.
 
 | column | meaning |
 |---|---|
@@ -27,14 +44,33 @@ Each (lr, β) configuration is evaluated at DPO steps 200, 400, …, 2000 and th
 | `dpo_step` | fidelity (training step) |
 | `elapsed_time_sec` | cumulative training cost to that checkpoint |
 | `ARC-C` … `ELO` | 11 downstream scores (higher is better) |
-| `Z-Static`, `Z-Dynamic`, `Z-All`, `Z-Macro` | **blackbox tables only** — per-fidelity z-score averages (static / preference / all / equal-group ½(dynamic+static)) |
+| `Z-Static`, `Z-Dynamic`, `Z-All`, `Z-Macro` | **blackbox tables only** — per-fidelity z-scores (static / preference / 11-bench mean / ½(dynamic+static)) |
 
-`*_raw.csv` keeps empty cells where an evaluation was missing. `*_blackbox.csv` applies the same cleaning used to build the searchable blackbox: drop (lr, β) pairs that lack a full fidelity trajectory; forward/back-fill rare intra-config gaps; z-normalize each benchmark **within a size and fidelity**, then average.
+`*_raw.csv` keeps empty cells where an evaluation was missing. `*_blackbox.csv`
+applies the paper pipeline: drop (lr, β) pairs without a full fidelity
+trajectory; forward/back-fill rare intra-config gaps; z-normalize each
+benchmark **within a size and fidelity**, then average. Reproduce with
+`python code/rebuild_blackbox_tables.py`.
 
-## Intended use
+## Simulation traces
 
-Offline multi-fidelity HPO / surrogate simulation (e.g. Syne Tune `BlackboxTabular` or a regression surrogate over `log10(lr)` × `log10(beta)`).
+One row per blackbox query. Optimizers: RandomSearch, TPE, CQR, ASHA, BOHB.
+Search objectives: Z-Dynamic, Z-All, Z-Macro. 25 seeds. Surrogates: GP
+(primary) and kNN-1/3/5. Budgets: generous = 8× one full DPO run, tight = 1×.
+ASHA/BOHB grace period 400, reduction factor 2 (rungs 400 / 800 / 1600). See
+`protocol.json`.
+
+| column | meaning |
+|---|---|
+| `search_objective`, `optimizer`, `seed`, `trial_id` | which run |
+| `dpo_step`, `st_tuner_time` | fidelity and simulated wall-clock |
+| `lr`, `beta` | proposed hyperparameters |
+| benchmark / Z-* columns | surrogate-evaluated scores at that checkpoint |
+
+`best_found.csv.gz` stores the incumbent under the finished-trial rule in
+`code/select_incumbent.py`.
 
 ## License
 
-CC BY 4.0 (see `LICENSE`).
+CC BY 4.0 (see `LICENSE`). During double-blind review the authors remain
+anonymous. After acceptance, please cite the accompanying paper.
