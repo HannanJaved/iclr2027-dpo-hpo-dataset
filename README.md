@@ -27,7 +27,7 @@ Each (lr, β) configuration is evaluated at DPO steps 200, 400, …, 2000 and th
 | `dpo_step` | fidelity (training step) |
 | `elapsed_time_sec` | cumulative training cost to that checkpoint |
 | `ARC-C` … `ELO` | 11 downstream scores (higher is better) |
-| `Z-Static`, `Z-Dynamic`, `Z-All` | **blackbox tables only** — per-fidelity z-score averages (static / preference / all benchmarks) |
+| `Z-Static`, `Z-Dynamic`, `Z-All`, `Z-Macro` | **blackbox tables only** — per-fidelity z-score averages (static / preference / all / equal-group ½(dynamic+static)) |
 
 `*_raw.csv` keeps empty cells where an evaluation was missing. `*_blackbox.csv` applies the same cleaning used to build the searchable blackbox: drop (lr, β) pairs that lack a full fidelity trajectory; forward/back-fill rare intra-config gaps; z-normalize each benchmark **within a size and fidelity**, then average.
 

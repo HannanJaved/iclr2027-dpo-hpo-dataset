@@ -67,9 +67,9 @@
     {
       "family": "qwen3",
       "size": "4b",
-      "n_rows_raw": 176,
-      "n_rows_blackbox": 176,
-      "n_configs": 16,
+      "n_rows_raw": 198,
+      "n_rows_blackbox": 198,
+      "n_configs": 18,
       "n_fidelities": 11,
       "fidelities": [
         200,
@@ -85,6 +85,8 @@
         2031
       ],
       "lr_values": [
+        4e-07,
+        8e-07,
         1e-06,
         2e-06,
         4e-06,
@@ -133,9 +135,9 @@
     {
       "family": "qwen3",
       "size": "14b",
-      "n_rows_raw": 176,
-      "n_rows_blackbox": 176,
-      "n_configs": 16,
+      "n_rows_raw": 187,
+      "n_rows_blackbox": 187,
+      "n_configs": 17,
       "n_fidelities": 11,
       "fidelities": [
         200,
@@ -152,6 +154,7 @@
       ],
       "lr_values": [
         8e-08,
+        1e-07,
         4e-07,
         8e-07,
         1e-06,
