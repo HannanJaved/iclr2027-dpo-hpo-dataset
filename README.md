@@ -12,8 +12,9 @@ data/                         checkpoint tables (core artifact)
   all_checkpoints_raw.csv              Qwen3 AO + Llama AO
   all_checkpoints_blackbox.csv
   llama_all_checkpoints_{raw,blackbox}.csv   Llama-only concat (1B/3B/8B)
-  qwen3_4b_ultrafeedback_{raw,blackbox}.csv  Qwen3-4B trained on UltraFeedback
-                                             (not AO self-play; 9 configs × 10 steps)
+  qwen3_{0.6b,1.7b,4b}_ultrafeedback_{raw,blackbox}.csv
+                                             Qwen3 trained on UltraFeedback
+                                             (not AO self-play; short schedule)
 traces/                       Qwen3 informed-protocol search logs (gzipped)
   qwen3_{size}/{gp,knn1,knn3,knn5}/{generous,tight}/
     simulation_raw.csv.gz     every optimizer report (config × checkpoint)
@@ -29,9 +30,9 @@ traces_manifest.json          per-trace row counts and objectives
 
 Each (lr, β) configuration is scored at DPO steps 200, 400, …, 2000 and the
 final checkpoint (~2031). Cost is `elapsed_time_sec` from that run’s trainer
-runtime. **UltraFeedback** Qwen3-4B uses a shorter schedule (steps 48, 96, …,
-432 and final ~478) and adds a `dataset=ultrafeedback_binarized` column so it
-is not mixed into the AO blackbox.
+runtime. **UltraFeedback** Qwen3-0.6B / 1.7B / 4B use a shorter schedule (steps 48, 96, …,
+432 and final ~478) and add a `dataset=ultrafeedback_binarized` column so they
+are not mixed into the AO blackbox.
 
 ## Core table schema
 
