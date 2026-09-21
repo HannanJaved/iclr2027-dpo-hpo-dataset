@@ -1,7 +1,7 @@
 # DPO-AO offline HPO blackbox
 
-Anonymized **checkpoint grid**, **blackbox construction code**, and **HPO
-simulation traces** for DPO hyperparameter selection (learning rate and β).
+**Checkpoint grid**, **blackbox construction code**, and **HPO simulation
+traces** for DPO hyperparameter selection (learning rate and β).
 
 ## Layout
 
@@ -19,7 +19,7 @@ traces/                       Qwen3 informed-protocol search logs (gzipped)
   qwen3_{size}/{gp,knn1,knn3,knn5}/{generous,tight}/
     simulation_raw.csv.gz     every optimizer report (config × checkpoint)
     best_found.csv.gz         one incumbent per (objective, optimizer, seed)
-code/                         construction + simulation (no cluster metadata)
+code/                         construction + simulation
 protocol.json                 HPO settings (ASHA rungs, budgets, seeds, …)
 manifest.json                 per-size config / fidelity counts
 traces_manifest.json          per-trace row counts and objectives
@@ -73,5 +73,4 @@ ASHA/BOHB grace period 400, reduction factor 2 (rungs 400 / 800 / 1600). See
 
 ## License
 
-CC BY 4.0 (see `LICENSE`). During double-blind review the authors remain
-anonymous. After acceptance, please cite the accompanying paper.
+CC BY 4.0 (see `LICENSE`). Please cite the accompanying paper.

@@ -1,7 +1,7 @@
 # Construction code
 
 Python used to clean the checkpoint grid, fit the continuous surrogates, and
-run the five Syne Tune optimizers. Cluster scripts are omitted.
+run the five Syne Tune optimizers.
 
 | file | role |
 |---|---|

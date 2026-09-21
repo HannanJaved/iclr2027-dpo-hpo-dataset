@@ -1,6 +1,6 @@
 """Protocol constants for the informed continuous-surrogate HPO study.
 
-Paths resolve inside this anonymous artifact: grid tables live in ../data,
+Paths resolve relative to this package: grid tables live in ../data,
 writable outputs go to ../work.
 """
 from __future__ import annotations
