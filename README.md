@@ -1,4 +1,4 @@
-# DPO-AO offline HPO blackbox
+# DPO offline HPO blackbox
 
 **Checkpoint grid**, **blackbox construction code**, and **HPO simulation
 traces** for DPO hyperparameter selection (learning rate and β).
