@@ -259,6 +259,161 @@
         0.02,
         0.04
       ]
+    },
+    {
+      "family": "qwen3",
+      "size": "0.6b",
+      "n_rows_raw": 90,
+      "n_rows_blackbox": 90,
+      "n_configs": 9,
+      "n_fidelities": 10,
+      "fidelities": [
+        48,
+        96,
+        144,
+        192,
+        240,
+        288,
+        336,
+        384,
+        432,
+        478
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ],
+      "dataset": "ultrafeedback_binarized"
+    },
+    {
+      "family": "qwen3",
+      "size": "1.7b",
+      "n_rows_raw": 90,
+      "n_rows_blackbox": 90,
+      "n_configs": 9,
+      "n_fidelities": 10,
+      "fidelities": [
+        48,
+        96,
+        144,
+        192,
+        240,
+        288,
+        336,
+        384,
+        432,
+        478
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ],
+      "dataset": "ultrafeedback_binarized"
+    },
+    {
+      "family": "qwen3",
+      "size": "4b",
+      "n_rows_raw": 90,
+      "n_rows_blackbox": 90,
+      "n_configs": 9,
+      "n_fidelities": 10,
+      "fidelities": [
+        48,
+        96,
+        144,
+        192,
+        240,
+        288,
+        336,
+        384,
+        432,
+        478
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ],
+      "dataset": "ultrafeedback_binarized"
+    },
+    {
+      "family": "qwen3",
+      "size": "8b",
+      "n_rows_raw": 90,
+      "n_rows_blackbox": 90,
+      "n_configs": 9,
+      "n_fidelities": 10,
+      "fidelities": [
+        48,
+        96,
+        144,
+        192,
+        240,
+        288,
+        336,
+        384,
+        432,
+        478
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ],
+      "dataset": "ultrafeedback_binarized"
+    },
+    {
+      "family": "qwen3",
+      "size": "14b",
+      "n_rows_raw": 90,
+      "n_rows_blackbox": 90,
+      "n_configs": 9,
+      "n_fidelities": 10,
+      "fidelities": [
+        48,
+        96,
+        144,
+        192,
+        240,
+        288,
+        336,
+        384,
+        432,
+        478
+      ],
+      "lr_values": [
+        1e-06,
+        2e-06,
+        4e-06
+      ],
+      "beta_values": [
+        0.01,
+        0.02,
+        0.04
+      ],
+      "dataset": "ultrafeedback_binarized"
     }
   ]
 }
